@@ -1,0 +1,38 @@
+{
+  "name": "next-blog",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@sanity/block-content-to-react": "^2.0.7",
+    "@sanity/client": "^1.149.16",
+    "@sanity/image-url": "^0.140.19",
+    "clsx": "^1.1.1",
+    "date-fns": "^2.14.0",
+    "lodash": "^4.17.15",
+    "next": "9.4.4",
+    "prism-react-renderer": "^1.1.1",
+    "prop-types": "^15.7.2",
+    "react": "16.13.1",
+    "react-dom": "16.13.1",
+    "react-player": "^2.3.1"
+  },
+  "devDependencies": {
+    "babel-eslint": "9.0.0",
+    "eslint": "5.14.1",
+    "eslint-config-airbnb": "17.1.0",
+    "eslint-config-prettier": "4.1.0",
+    "eslint-config-wesbos": "0.0.19",
+    "eslint-plugin-html": "5.0.3",
+    "eslint-plugin-import": "2.16.0",
+    "eslint-plugin-jsx-a11y": "6.2.1",
+    "eslint-plugin-prettier": "3.0.1",
+    "eslint-plugin-react": "7.12.4",
+    "eslint-plugin-react-hooks": "1.3.0",
+    "postcss-preset-env": "^6.7.0",
+    "prettier": "1.16.4",
+    "tailwindcss": "^1.4.6"
+  }
+}

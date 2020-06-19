@@ -1,0 +1,23 @@
+{
+  "extends": ["wesbos"],
+  "rules": {
+    "prettier/prettier": [
+      "error",
+      {
+        "semi": true,
+        "singleQuote": true,
+        "tabWidth": 2,
+        "trailingComma": "es5"
+      }
+    ],
+    "react/prop-types": [
+      2,
+      {
+        "ignore": ["className", "children", "style", "location"]
+      }
+    ],
+    "global-require": "off",
+    "react/no-danger": "off",
+    "camelcase": "off"
+  }
+}

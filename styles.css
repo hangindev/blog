@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+
+body {
+  @apply bg-gray-100 text-gray-900;
+}
+
+.layout {
+  @apply max-w-screen-md min-h-screen mx-auto p-3;
+}
+@screen md {
+  .layout {
+    @apply py-6;
+  }
+}
+
+a,
+.link {
+  @apply text-blue-600;
+}
+
+@tailwind utilities;

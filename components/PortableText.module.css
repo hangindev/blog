@@ -1,0 +1,89 @@
+.md {
+  @apply leading-relaxed;
+}
+
+.md h1,
+.md h3,
+.md h5,
+.md p {
+  @apply font-serif;
+}
+.md h1,
+.md h2,
+.md h3,
+.md h4,
+.md h5,
+.md h6 {
+  @apply font-bold;
+}
+
+.md h1,
+.md h2,
+.md h3 {
+  @apply mt-10 mb-3;
+}
+.md h4,
+.md h5,
+.md h6 {
+  @apply mt-8 mb-3;
+}
+.md p,
+.md ul,
+.md ol,
+.md figure,
+.md pre,
+.md blockquote {
+  @apply mb-4;
+}
+
+.md h1 {
+  @apply text-4xl;
+}
+.md h2 {
+  @apply text-3xl;
+}
+.md h3 {
+  @apply text-2xl;
+}
+.md h4 {
+  @apply text-lg;
+}
+.md h5 {
+  @apply text-base;
+}
+.md h6 {
+  @apply text-sm;
+}
+
+.md ul {
+  @apply list-disc list-inside;
+}
+.md ol {
+  @apply list-decimal list-inside;
+}
+
+.md figure {
+  @apply -mx-3;
+}
+
+.md pre {
+  @apply overflow-auto -mx-3 p-4;
+}
+@screen md {
+  .md pre {
+    @apply rounded;
+  }
+}
+
+.md blockquote {
+  @apply -mx-3 p-4 bg-blue-100 text-gray-600;
+}
+@screen md {
+  .md blockquote {
+    @apply rounded;
+  }
+}
+
+.md code {
+  @apply inline-block bg-gray-200 px-1 rounded-sm;
+}

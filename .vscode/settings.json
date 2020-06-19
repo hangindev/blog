@@ -1,0 +1,10 @@
+{
+  "//": "How to add a @tailwind CSS rule to css checker https://stackoverflow.com/a/61333686/9912194?stw=2",
+  "css.customData": [".vscode/css_custom_data.json"],
+  "workbench.colorCustomizations": {
+    "titleBar.activeForeground": "#000",
+    "titleBar.inactiveForeground": "#000000CC",
+    "titleBar.activeBackground": "#FFC600",
+    "titleBar.inactiveBackground": "#FFC600CC"
+  }
+}
