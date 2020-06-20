@@ -67,7 +67,7 @@
 }
 
 .md pre {
-  @apply overflow-auto -mx-3 p-4;
+  @apply text-sm overflow-auto -mx-3 p-4;
 }
 @screen md {
   .md pre {
@@ -76,14 +76,14 @@
 }
 
 .md blockquote {
-  @apply -mx-3 p-4 bg-blue-100 text-gray-600;
+  @apply -mx-3 p-4 bg-blue-100 text-gray-600 border-l-8 border-blue-300;
 }
 @screen md {
   .md blockquote {
-    @apply rounded;
+    @apply rounded border-l-4;
   }
 }
 
 .md code {
-  @apply inline-block bg-gray-200 px-1 rounded-sm;
+  @apply inline-block bg-gray-200 rounded-sm;
 }

@@ -52,7 +52,6 @@ function BlogPost({ preview, post, blogSettings, author, next, prev }) {
 export default BlogPost;
 
 export async function getStaticProps({ params, preview = false }) {
-  console.log('getStaticProps', preview);
   const [post, author, blogSettings, allPosts] = await Promise.all([
     getPost(params.slug, preview),
     getAuthor(),

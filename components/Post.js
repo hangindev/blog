@@ -8,6 +8,10 @@ import Figure from './Figure';
 function Post({ className, title, publishedAt, content, coverImage = null }) {
   return (
     <article className={clsx(className)}>
+      <small>{format(new Date(publishedAt), 'MMMM d, yyyy')}</small>
+      <h2 className="text-gray-800 text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-8">
+        {title}
+      </h2>
       {coverImage && (
         <Figure
           {...coverImage}
@@ -15,10 +19,6 @@ function Post({ className, title, publishedAt, content, coverImage = null }) {
           imageClassName="md:rounded shadow-xl"
         />
       )}
-      <small>{format(new Date(publishedAt), 'MMMM d, yyyy')}</small>
-      <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 leading-tight mb-6">
-        {title}
-      </h2>
       <PortableText blocks={content} />
     </article>
   );

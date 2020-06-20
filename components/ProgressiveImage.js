@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { loadImage } from '../utils';
 
 function ProgressiveImage({
   className,
@@ -10,12 +9,11 @@ function ProgressiveImage({
   lqip = null,
   aspectRatio = 3 / 2,
 }) {
-  const [loaded, setLoaded] = useState(src);
+  const imgRef = useRef();
+  const [loaded, setLoaded] = useState(false);
   useEffect(() => {
-    loadImage(src).then(() => {
-      setLoaded(true);
-    });
-  }, [src]);
+    if (imgRef.current?.complete) setLoaded(true);
+  }, []);
   return (
     <div className={clsx('relative overflow-hidden', className)}>
       <div style={{ paddingBottom: `${100 / aspectRatio}%` }} />
@@ -23,16 +21,19 @@ function ProgressiveImage({
         <img
           className="absolute w-full h-full inset-0 object-cover object-center"
           src={lqip}
-          alt={alt}
+          alt=""
+          role="presentation"
         />
       )}
       <img
+        ref={imgRef}
         className={clsx(
           'absolute w-full h-full inset-0 object-cover object-center opacity-0 transition duration-700 ease-in-out transition-opacity',
           (loaded || !lqip) && 'opacity-100'
         )}
         src={src}
         alt={alt}
+        onLoad={() => setLoaded(true)}
       />
     </div>
   );

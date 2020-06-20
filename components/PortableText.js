@@ -3,6 +3,7 @@ import clsx from 'clsx';
 import Link from 'next/link';
 import BlockContent from '@sanity/block-content-to-react';
 import Highlight, { defaultProps } from 'prism-react-renderer';
+import theme from 'prism-react-renderer/themes/nightOwl';
 import ReactPlayer from 'react-player/lazy';
 import styles from './PortableText.module.css';
 import Figure from './Figure';
@@ -63,6 +64,7 @@ function CodeBlock({ node: { code, language } }) {
       {...defaultProps}
       code={code}
       language={resolveLanguage(language)}
+      theme={theme}
     >
       {({ style, tokens, getLineProps, getTokenProps }) => (
         <pre style={{ ...style }}>
