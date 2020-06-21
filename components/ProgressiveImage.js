@@ -22,10 +22,11 @@ function ProgressiveImage({
           className="absolute w-full h-full inset-0 object-cover object-center"
           src={lqip}
           alt=""
-          role="presentation"
+          aria-hidden="true"
         />
       )}
       <img
+        loading="lazy"
         ref={imgRef}
         className={clsx(
           'absolute w-full h-full inset-0 object-cover object-center opacity-0 transition duration-700 ease-in-out transition-opacity',
