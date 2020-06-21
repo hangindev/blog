@@ -25,7 +25,7 @@ function SEO({
         content={description}
       />
       <meta property="og:type" content={type} key="ogType" />
-      <meta name="twitter:card" content="summary" />
+      <meta name="twitter:card" content="summary_large_image" />
       {twitter && <meta name="twitter:site" content={`@${twitter}`} />}
       {twitterCreator && (
         <meta name="twitter:creator" content={`@${twitterCreator}`} />
