@@ -22,12 +22,12 @@
 .md h3 {
   @apply mt-10 mb-3;
 }
-.md h4,
-.md h5,
-.md h6 {
+.md h4 {
   @apply mt-8 mb-3;
 }
 .md p,
+.md h5,
+.md h6,
 .md ul,
 .md ol,
 .md figure,
@@ -49,10 +49,10 @@
   @apply text-lg;
 }
 .md h5 {
-  @apply text-base;
+  @apply text-lg;
 }
 .md h6 {
-  @apply text-sm;
+  @apply text-base;
 }
 
 .md ul {
