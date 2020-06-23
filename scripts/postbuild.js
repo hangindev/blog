@@ -29,7 +29,8 @@ function getPageFiles(directory, files = []) {
 }
 
 async function main() {
-  console.log(fs.readdirSync('./'));
+  console.log(fs.readdirSync('./.next'));
+  console.log(fs.readdirSync('./.next/static'));
   // const buildId = getBuildId();
   // const pagesDir = `./.next/server/static/${buildId}/pages`;
   // const pageFiles = getPageFiles(pagesDir);
@@ -49,4 +50,4 @@ async function main() {
   // console.log(data);
 }
 
-main();
+main().catch(console.log);
