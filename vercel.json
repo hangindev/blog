@@ -1,0 +1,3 @@
+{
+  "routes": [{ "src": "/feed.json", "dest": "/_next/static/feed.json" }]
+}

@@ -29,8 +29,10 @@ function getPageFiles(directory, files = []) {
 }
 
 async function main() {
-  console.log(fs.readdirSync('./.next'));
-  console.log(fs.readdirSync('./.next/static'));
+  fs.writeFileSync(
+    path.join('./.next/static', 'feed.json'),
+    JSON.stringify({ test: 'ing' })
+  );
   // const buildId = getBuildId();
   // const pagesDir = `./.next/server/static/${buildId}/pages`;
   // const pageFiles = getPageFiles(pagesDir);
