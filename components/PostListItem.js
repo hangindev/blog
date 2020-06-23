@@ -8,7 +8,7 @@ import Image from './ProgressiveImage';
 function PostListItem({ title, publishedAt, slug, excerpt, coverImage }) {
   return (
     <div className="flex flex-col sm:flex-row sm:items-center sm:w-full mb-10">
-      <Link href={`/blog/${slug}`}>
+      <Link href="/blog/[slug]" as={`/blog/${slug}`}>
         <a>
           <Image
             src={imageBuilder
@@ -24,7 +24,7 @@ function PostListItem({ title, publishedAt, slug, excerpt, coverImage }) {
       <div>
         <small>{format(new Date(publishedAt), 'MMM d, yyyy')}</small>
         <h4 className="text-2xl font-bold mb-2 leading-tight">
-          <Link href={`/blog/${slug}`}>
+          <Link href="/blog/[slug]" as={`/blog/${slug}`}>
             <a>{title}</a>
           </Link>
         </h4>

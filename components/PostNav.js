@@ -13,14 +13,14 @@ function PostNav({ next, prev, className }) {
     >
       <li className="mb-2 md:flex-grow md:w-0 md:my-0 md:mr-2">
         {prev && (
-          <Link href={`/blog/${prev.slug}`}>
+          <Link href="/blog/[slug]" as={`/blog/${prev.slug}`}>
             <a>← {prev.title}</a>
           </Link>
         )}
       </li>
       <li className="mt-2 md:flex-grow md:w-0 md:my-0 md:ml-2">
         {next && (
-          <Link href={`/blog/${next.slug}`}>
+          <Link href="/blog/[slug]" as={`/blog/${next.slug}`}>
             <a>{next.title} →</a>
           </Link>
         )}
