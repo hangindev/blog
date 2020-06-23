@@ -46,8 +46,10 @@ async function main() {
   console.log(buildId);
   // const pagesDir = `./.next/serverless/static/${buildId}`;
 
-  printDir(`./.next/static/${buildId}/pages`);
-  printDir(`./.next/serverless/static/${buildId}`);
+  printDir(`./.next/serverless`);
+  printDir(`./.next/serverless/static`);
+  printDir(`./.next/serverless/static/pages`);
+  printDir(`./.next/serverless/pages`);
   // const pageFiles = getPageFiles(pagesDir);
   // const data = pageFiles.map(file => {
   //   const relativeUrl = path.relative(pagesDir, file).slice(0, -'.html'.length);
