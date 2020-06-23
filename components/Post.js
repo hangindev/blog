@@ -19,7 +19,7 @@ function Post({ className, title, publishedAt, content, coverImage = null }) {
           imageClassName="md:rounded shadow-xl"
         />
       )}
-      <PortableText blocks={content} />
+      <PortableText blocks={content} id="Content" />
     </article>
   );
 }
