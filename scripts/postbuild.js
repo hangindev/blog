@@ -35,7 +35,7 @@ async function main() {
   // );
   const buildId = getBuildId();
   console.log(buildId);
-  const pagesDir = `./.next/static/`;
+  const pagesDir = `./.next/serverless/static/${buildId}/pages`;
   console.log(fs.readdirSync(pagesDir));
   // const pageFiles = getPageFiles(pagesDir);
   // const data = pageFiles.map(file => {
