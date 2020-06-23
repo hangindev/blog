@@ -29,23 +29,24 @@ function getPageFiles(directory, files = []) {
 }
 
 async function main() {
-  const buildId = getBuildId();
-  const pagesDir = `./.next/server/static/${buildId}/pages`;
-  const pageFiles = getPageFiles(pagesDir);
-  const data = pageFiles.map(file => {
-    const relativeUrl = path.relative(pagesDir, file).slice(0, -'.html'.length);
-    const url =
-      relativeUrl === 'index' ? baseUrl : new URL(relativeUrl, baseUrl).href;
-    // let rssItem;
-    // if (relativeUrl.startsWith('blog')) {
-    // }
-    return {
-      url,
-      // rssItem,
-    };
-  });
+  console.log(fs.readdirSync('./'));
+  // const buildId = getBuildId();
+  // const pagesDir = `./.next/server/static/${buildId}/pages`;
+  // const pageFiles = getPageFiles(pagesDir);
+  // const data = pageFiles.map(file => {
+  //   const relativeUrl = path.relative(pagesDir, file).slice(0, -'.html'.length);
+  //   const url =
+  //     relativeUrl === 'index' ? baseUrl : new URL(relativeUrl, baseUrl).href;
+  //   // let rssItem;
+  //   // if (relativeUrl.startsWith('blog')) {
+  //   // }
+  //   return {
+  //     url,
+  //     // rssItem,
+  //   };
+  // });
 
-  console.log(data);
+  // console.log(data);
 }
 
 main();
