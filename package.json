@@ -4,7 +4,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "postbuild": "node ./.next/serverless/posts/postbuild.js"
+    "postbuild": "node ./scripts/postbuild"
   },
   "dependencies": {
     "@sanity/block-content-to-react": "^2.0.7",
