@@ -29,12 +29,14 @@ function getPageFiles(directory, files = []) {
 }
 
 async function main() {
-  fs.writeFileSync(
-    path.join('./.next/static', 'feed.json'),
-    JSON.stringify({ test: 'ing' })
-  );
-  // const buildId = getBuildId();
-  // const pagesDir = `./.next/server/static/${buildId}/pages`;
+  // fs.writeFileSync(
+  //   path.join('./.next/static', 'feed.json'),
+  //   JSON.stringify({ test: 'ing' })
+  // );
+  const buildId = getBuildId();
+  console.log(buildId);
+  const pagesDir = `./.next/server/static/${buildId}/pages`;
+  console.log(fs.readdirSync(pagesDir));
   // const pageFiles = getPageFiles(pagesDir);
   // const data = pageFiles.map(file => {
   //   const relativeUrl = path.relative(pagesDir, file).slice(0, -'.html'.length);
@@ -52,4 +54,4 @@ async function main() {
   // console.log(data);
 }
 
-main().catch(console.log);
+main();
