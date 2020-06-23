@@ -28,6 +28,15 @@ function getPageFiles(directory, files = []) {
   return files;
 }
 
+function printDir(dir) {
+  try {
+    console.log(`Checking ${dir}:`);
+    console.log(fs.readdirSync(dir));
+  } catch (e) {
+    console.log('Not found');
+  }
+}
+
 async function main() {
   // fs.writeFileSync(
   //   path.join('./.next/static', 'feed.json'),
@@ -35,8 +44,14 @@ async function main() {
   // );
   const buildId = getBuildId();
   console.log(buildId);
-  const pagesDir = `./.next/serverless/static/${buildId}/pages`;
-  console.log(fs.readdirSync(pagesDir));
+  // const pagesDir = `./.next/serverless/static/${buildId}`;
+
+  printDir(`./.next/serverless/${buildId}`);
+  printDir(`./.next/static/${buildId}`);
+  printDir(`./.next/serverless/${buildId}/static`);
+  printDir(`./.next/serverless/${buildId}/static/pages`);
+  printDir(`./.next/serverless/${buildId}/pages`);
+  printDir(`./.next/static/${buildId}/pages`);
   // const pageFiles = getPageFiles(pagesDir);
   // const data = pageFiles.map(file => {
   //   const relativeUrl = path.relative(pagesDir, file).slice(0, -'.html'.length);
