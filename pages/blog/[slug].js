@@ -33,11 +33,14 @@ function BlogPost({ preview, post, blogSettings, author, next, prev }) {
     <div className="layout">
       <SEO
         siteName={blogSettings.title}
+        type="article"
         title={`${post.title} | ${blogSettings.title}`}
         description={post.excerpt}
         twitter={blogSettings.twitter}
         twitterCreator={getAuthorTwitterHandle(author)}
         image={image}
+        publishedAt={post.publishedAt}
+        url={`${blogSettings.url}/blog/${post.slug}`}
       />
       <Header className="mb-4 sm:mb-5" name={blogSettings.title} />
       <Post className="mb-8 sm:mb-10" {...post} />

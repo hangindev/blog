@@ -16,6 +16,7 @@ function Home({ author, posts, blogSettings, preview }) {
         description={blogSettings.description}
         image={blogSettings.image}
         twitter={blogSettings.twitter}
+        url={blogSettings.url}
         twitterCreator={getAuthorTwitterHandle(author)}
       />
       <Header className="mb-8 sm:mb-10" name={blogSettings.title} />

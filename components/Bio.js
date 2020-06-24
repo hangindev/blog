@@ -5,6 +5,7 @@ import BlockContent from '@sanity/block-content-to-react';
 import { imageBuilder } from '../lib/api';
 
 function Bio({ author, className }) {
+  const twitter = author.socialLinks.find(l => l.type === 'Twitter');
   return (
     <aside className={clsx('flex items-center', className)}>
       <img
@@ -14,9 +15,16 @@ function Bio({ author, className }) {
           .width(128)
           .url()}
         alt={author.name}
+        id="Avatar"
       />
       <div className="ml-4">
-        <p className="text-lg">{author.name}</p>
+        <a
+          className="text-lg text-gray-900"
+          rel="author"
+          href={twitter?.url || '/'}
+        >
+          {author.name}
+        </a>
         <BlockContent blocks={author.bio} />
       </div>
     </aside>

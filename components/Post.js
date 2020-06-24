@@ -1,17 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { format } from 'date-fns';
+import { format, formatRFC3339 } from 'date-fns';
 import PortableText from './PortableText';
 import Figure from './Figure';
 
 function Post({ className, title, publishedAt, content, coverImage = null }) {
+  const date = new Date(publishedAt);
+  const dateDisplay = format(date, 'MMMM d, yyyy');
   return (
     <article className={clsx(className)}>
-      <small>{format(new Date(publishedAt), 'MMMM d, yyyy')}</small>
-      <h2 className="text-gray-800 text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-8">
+      <time pubdate="ttue" dateTime={formatRFC3339(date)} title={dateDisplay}>
+        {dateDisplay}
+      </time>
+      <h1 className="text-gray-800 text-4xl sm:text-5xl md:text-6xl font-bold leading-tight mb-8">
         {title}
-      </h2>
+      </h1>
       {coverImage && (
         <Figure
           {...coverImage}
@@ -19,7 +23,9 @@ function Post({ className, title, publishedAt, content, coverImage = null }) {
           imageClassName="md:rounded shadow-xl"
         />
       )}
-      <PortableText blocks={content} id="Content" />
+      <div id="Content">
+        <PortableText blocks={content} />
+      </div>
     </article>
   );
 }

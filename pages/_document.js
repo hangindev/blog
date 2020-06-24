@@ -2,17 +2,17 @@ import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { getDocuemntData, imageBuilder } from '../lib/api';
 
 const appleTouchIconWidths = [57, 76, 96, 120, 144, 195, 228];
-const faviconWidths = [192, 32, 96, 16];
+const faviconWidths = [256, 192, 32, 96, 64, 16];
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
-    const { icon, paymentPointer } = await getDocuemntData();
-    return { ...initialProps, icon, paymentPointer };
+    const data = await getDocuemntData();
+    return { ...initialProps, ...data };
   }
 
   render() {
-    const { icon, paymentPointer } = this.props;
+    const { title, url, icon, paymentPointer } = this.props;
     return (
       <Html lang="en">
         <Head>
@@ -45,6 +45,12 @@ export default class MyDocument extends Document {
           {paymentPointer && (
             <meta name="monetization" content={paymentPointer} />
           )}
+          <link
+            rel="alternate"
+            title={`${title} RSS Feed`}
+            type="application/json"
+            href={`${url}/feed.json`}
+          />
         </Head>
         <body>
           <Main />
