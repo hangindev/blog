@@ -86,7 +86,7 @@ function buildRss(pageFiles, pagesDir) {
 
 async function main() {
   let pagesDir = `./.next/serverless/pages`;
-  if (!fs.existsSync(path)) {
+  if (!fs.existsSync(pagesDir)) {
     pagesDir = `./.next/server/static/${getBuildId()}/pages`;
   }
   const pageFiles = getPageFiles(pagesDir);
