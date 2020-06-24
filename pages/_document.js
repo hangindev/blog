@@ -1,8 +1,7 @@
 import Document, { Html, Head, Main, NextScript } from 'next/document';
 import { getDocuemntData, imageBuilder } from '../lib/api';
 
-const appleTouchIconWidths = [57, 76, 96, 120, 144, 195, 228];
-const faviconWidths = [256, 192, 32, 96, 64, 16];
+const faviconWidths = [512, 192, 32, 96, 64, 16];
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
@@ -16,19 +15,6 @@ export default class MyDocument extends Document {
     return (
       <Html lang="en">
         <Head>
-          {icon &&
-            appleTouchIconWidths.map(w => (
-              <link
-                key={w}
-                rel="apple-touch-icon"
-                sizes={`${w}x${w}`}
-                href={imageBuilder
-                  .image(icon)
-                  .width(w)
-                  .height(w)
-                  .url()}
-              />
-            ))}
           {icon &&
             faviconWidths.map(w => (
               <link

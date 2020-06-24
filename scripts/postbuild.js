@@ -2,10 +2,6 @@ const fs = require('fs');
 const path = require('path');
 const cheerio = require('cheerio');
 
-// const baseUrl = process.env.BASE_URL || 'http://localhost:3000';
-
-console.log(process.env.BASE_URL);
-
 function isPageFile(filename) {
   return (
     path.extname(filename) === '.html' &&
@@ -14,9 +10,9 @@ function isPageFile(filename) {
   );
 }
 
-// function getBuildId() {
-//   return fs.readFileSync('./.next/BUILD_ID', 'utf8');
-// }
+function getBuildId() {
+  return fs.readFileSync('./.next/BUILD_ID', 'utf8');
+}
 
 function getPageFiles(directory, files = []) {
   const entries = fs.readdirSync(directory, { withFileTypes: true });
@@ -31,7 +27,7 @@ function getPageFiles(directory, files = []) {
   return files;
 }
 
-// function buildSiteMap() {}
+function buildSiteMap() {}
 function buildRss(pageFiles, pagesDir) {
   const rssData = pageFiles.reduce(
     (data, file) => {
@@ -47,7 +43,7 @@ function buildRss(pageFiles, pagesDir) {
           `link[rel='alternate'][type='application/json']`
         ).attr('href');
         data.description = $(`meta[name='description']`).attr('content');
-        data.icon = $(`link[sizes='256x256']`).attr('href');
+        data.icon = $(`link[sizes='512x512']`).attr('href');
         data.favicon = $(`link[sizes='64x64']`).attr('href');
         data.author = {
           name: $(`a[rel='author']`).text(),
@@ -58,11 +54,12 @@ function buildRss(pageFiles, pagesDir) {
       if (relativeUrl.startsWith('blog')) {
         const htmlString = fs.readFileSync(file, 'utf8');
         const $ = cheerio.load(htmlString);
+        $(`#Content img[aria-hidden='true']`).remove();
         data.items.push({
           url: $(`meta[property='og:url']`).attr('content'),
           id: relativeUrl.substring('blog/'.length),
           content_html: $('#Content').html(),
-          title: $('h1').text(),
+          title: $('article h1').text(),
           summary: $(`meta[name='description']`).attr('content'),
           image: $(`meta[property='og:image']`).attr('content'),
           banner_image: $(`meta[property='og:image']`).attr('content'),
@@ -87,15 +84,11 @@ function buildRss(pageFiles, pagesDir) {
   );
 }
 
-// function filePathToUrl(file, pagesDir) {
-//   const relativeUrl = path.relative(pagesDir, file).slice(0, -'.html'.length);
-//   return relativeUrl === 'index' ? baseUrl : new URL(relativeUrl, baseUrl).href;
-// }
-
 async function main() {
-  // const buildId = getBuildId();
-  // const pagesDir = `./.next/server/static/${buildId}/pages`;
-  const pagesDir = `./.next/serverless/pages`;
+  let pagesDir = `./.next/serverless/pages`;
+  if (!fs.existsSync(path)) {
+    pagesDir = `./.next/server/static/${getBuildId()}/pages`;
+  }
   const pageFiles = getPageFiles(pagesDir);
   // buildSiteMap(pageFiles, pagesDir);
   buildRss(pageFiles, pagesDir);
