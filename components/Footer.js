@@ -4,20 +4,30 @@ import clsx from 'clsx';
 
 function Footer({ socialLinks = [], className }) {
   return (
-    <footer className={clsx('flex text-blue-600 mb-8', className)}>
-      {socialLinks.map(({ type, url }, i) => (
-        <div key={url}>
-          {i > 0 && <span className="mx-2">•</span>}
-          <a
-            className="underline"
-            href={url}
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            {type}
-          </a>
-        </div>
-      ))}
+    <footer className={clsx('flex justify-between  mb-8 w-full', className)}>
+      <div className="flex">
+        {socialLinks.map(({ type, url }, i) => (
+          <div key={url}>
+            {i > 0 && <span className="mx-2 text-blue-600">•</span>}
+            <a
+              className="underline"
+              href={url}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {type}
+            </a>
+          </div>
+        ))}
+      </div>
+      <a
+        className="underline"
+        href="/feed.json"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        rss
+      </a>
     </footer>
   );
 }

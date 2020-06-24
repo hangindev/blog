@@ -33,7 +33,6 @@ function buildSiteMap(pageFiles) {
     const $ = cheerio.load(htmlString);
     return $(`meta[property='og:url']`).attr('content');
   });
-  console.log(urls);
   const sitemap = `
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
   xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" 
@@ -109,12 +108,12 @@ function buildRss(pageFiles, pagesDir) {
   );
   fs.writeFileSync(
     path.join('./.next/static', 'feed.json'),
-    JSON.stringify(rssData)
+    JSON.stringify(rssData, null, 2)
   );
 }
 
 async function main() {
-  let pagesDir = `./.next/serverless/pages`;
+  let pagesDir = './.next/serverless/pages';
   if (!fs.existsSync(pagesDir)) {
     pagesDir = `./.next/server/static/${getBuildId()}/pages`;
   }
