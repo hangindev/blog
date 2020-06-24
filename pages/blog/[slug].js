@@ -14,6 +14,7 @@ import {
   imageBuilder,
 } from '../../lib/api';
 import { getAuthorTwitterHandle } from '../../utils';
+import ConvertKit from '../../components/ConvertKit';
 
 function BlogPost({ preview, post, blogSettings, author, next, prev }) {
   let image = null;
@@ -44,6 +45,12 @@ function BlogPost({ preview, post, blogSettings, author, next, prev }) {
       />
       <Header className="mb-4 sm:mb-5" name={blogSettings.title} />
       <Post className="mb-8 sm:mb-10" {...post} />
+      {blogSettings.convertKit && (
+        <ConvertKit
+          className="mb-8 sm:mb-10"
+          script={blogSettings.convertKit}
+        />
+      )}
       <Bio className="mb-12 sm:mb-16" author={author} />
       <PostNav className="mb-12 sm:mb-16" next={next} prev={prev} />
       <Footer socialLinks={author.socialLinks} />
