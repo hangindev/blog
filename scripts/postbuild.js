@@ -52,7 +52,7 @@ function buildSiteMap(pageFiles) {
     `
     )
     .join('')}  
-</urlset>;
+</urlset>
 `;
   fs.writeFileSync(path.join('./.next/static', 'sitemap.xml'), sitemap);
 }
