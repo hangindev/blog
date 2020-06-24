@@ -27,7 +27,33 @@ function getPageFiles(directory, files = []) {
   return files;
 }
 
-function buildSiteMap() {}
+function buildSiteMap(pageFiles) {
+  const urls = pageFiles.map(file => {
+    const htmlString = fs.readFileSync(file, 'utf8');
+    const $ = cheerio.load(htmlString);
+    return $(`meta[property='og:url']`).attr('content');
+  });
+  const sitemap = `
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
+  xmlns:news="http://www.google.com/schemas/sitemap-news/0.9" 
+  xmlns:xhtml="http://www.w3.org/1999/xhtml" 
+  xmlns:mobile="http://www.google.com/schemas/sitemap-mobile/1.0" 
+  xmlns:image="http://www.google.com/schemas/sitemap-image/1.1" 
+  xmlns:video="http://www.google.com/schemas/sitemap-video/1.1">
+  ${urls.map(
+    url => `
+    <url>
+      <loc>${url}/loc>
+      <changefreq>daily</changefreq>
+      <priority>0.7</priority>
+    </url>
+    `
+  )}  
+</urlset>;
+`;
+  fs.writeFileSync(path.join('./.next/static', 'sitemap.xml'), sitemap);
+}
+
 function buildRss(pageFiles, pagesDir) {
   const rssData = pageFiles.reduce(
     (data, file) => {
@@ -90,7 +116,7 @@ async function main() {
     pagesDir = `./.next/server/static/${getBuildId()}/pages`;
   }
   const pageFiles = getPageFiles(pagesDir);
-  // buildSiteMap(pageFiles, pagesDir);
+  buildSiteMap(pageFiles);
   buildRss(pageFiles, pagesDir);
 }
 
