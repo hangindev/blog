@@ -40,6 +40,7 @@ Footer.propTypes = {
         'Medium',
         'Github',
         'Stackoverflow',
+        'Dev.to',
       ]),
       url: PropTypes.string.isRequired,
     })

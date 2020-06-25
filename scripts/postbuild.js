@@ -3,11 +3,7 @@ const path = require('path');
 const cheerio = require('cheerio');
 
 function isPageFile(filename) {
-  return (
-    path.extname(filename) === '.html' &&
-    !filename.startsWith('_') &&
-    !filename.endsWith('404.html')
-  );
+  return path.extname(filename) === '.html' && !filename.endsWith('404.html');
 }
 
 function getBuildId() {
@@ -59,10 +55,8 @@ function buildSiteMap(pageFiles) {
 function buildRss(pageFiles, pagesDir) {
   const rssData = pageFiles.reduce(
     (data, file) => {
-      const relativeUrl = path
-        .relative(pagesDir, file)
-        .slice(0, -'.html'.length);
-      if (relativeUrl === 'index') {
+      const pathname = path.relative(pagesDir, file).slice(0, -'.html'.length);
+      if (pathname === 'index') {
         const htmlString = fs.readFileSync(file, 'utf8');
         const $ = cheerio.load(htmlString);
         data.title = $('title').text();
@@ -79,13 +73,13 @@ function buildRss(pageFiles, pagesDir) {
           avatar: $(`img#Avatar`).attr('src'),
         };
       }
-      if (relativeUrl.startsWith('blog')) {
+      if (pathname.startsWith('blog')) {
         const htmlString = fs.readFileSync(file, 'utf8');
         const $ = cheerio.load(htmlString);
         $(`#Content img[aria-hidden='true']`).remove();
         data.items.push({
           url: $(`meta[property='og:url']`).attr('content'),
-          id: relativeUrl.substring('blog/'.length),
+          id: pathname.substring('blog/'.length),
           content_html: $('#Content').html(),
           title: $('article h1').text(),
           summary: $(`meta[name='description']`).attr('content'),
@@ -112,14 +106,16 @@ function buildRss(pageFiles, pagesDir) {
   );
 }
 
-async function main() {
+function main() {
+  // 'pages' location in Vercel environment
   let pagesDir = './.next/serverless/pages';
   if (!fs.existsSync(pagesDir)) {
+    // 'pages' location in local environment
     pagesDir = `./.next/server/static/${getBuildId()}/pages`;
   }
   const pageFiles = getPageFiles(pagesDir);
-  buildSiteMap(pageFiles);
   buildRss(pageFiles, pagesDir);
+  buildSiteMap(pageFiles);
 }
 
 main();
