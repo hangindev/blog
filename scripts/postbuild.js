@@ -52,6 +52,14 @@ function buildSiteMap(pageFiles) {
   fs.writeFileSync(path.join('./.next/static', 'sitemap.xml'), sitemap);
 }
 
+function byDateDesc(a, b) {
+  const date1 = new Date(a.date_published);
+  const date2 = new Date(b.date_published);
+  if (date1 > date2) return -1;
+  if (date1 < date2) return 1;
+  return 0;
+}
+
 function buildRss(pageFiles, pagesDir) {
   const rssData = pageFiles.reduce(
     (data, file) => {
@@ -100,6 +108,7 @@ function buildRss(pageFiles, pagesDir) {
       items: [],
     }
   );
+  rssData.items.sort(byDateDesc);
   fs.writeFileSync(
     path.join('./.next/static', 'feed.json'),
     JSON.stringify(rssData, null, 2)
