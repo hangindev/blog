@@ -54,6 +54,9 @@ function VideoPlayer({ node: { url } }) {
     </div>
   );
 }
+function EmbedHTML({ node: { html } }) {
+  return <div dangerouslySetInnerHTML={{ __html: html }} />;
+}
 
 function resolveLanguage(lang) {
   return lang === 'sh' ? 'bash' : lang;
@@ -90,6 +93,7 @@ const serializers = {
     figure: PortableFigure,
     code: CodeBlock,
     video: VideoPlayer,
+    embedHTML: EmbedHTML,
   },
 };
 
