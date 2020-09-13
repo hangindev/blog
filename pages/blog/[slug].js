@@ -88,6 +88,6 @@ export async function getStaticPaths() {
       posts.map(({ slug }) => ({
         params: { slug },
       })) || [],
-    fallback: false,
+    fallback: true,
   };
 }
