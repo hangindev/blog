@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
 
 function Footer({ socialLinks = [], className }) {
   return (
-    <footer className={clsx('flex justify-between  mb-8 w-full', className)}>
+    <footer className={clsx("flex justify-between  mb-8 w-full", className)}>
       <div className="flex">
         {socialLinks.map(({ type, url }, i) => (
           <div key={url}>
@@ -35,15 +35,15 @@ Footer.propTypes = {
   socialLinks: PropTypes.arrayOf(
     PropTypes.shape({
       type: PropTypes.oneOf([
-        'Facebook',
-        'Twitter',
-        'Medium',
-        'Github',
-        'Stackoverflow',
-        'Dev.to',
+        "Facebook",
+        "Twitter",
+        "Medium",
+        "Github",
+        "Stackoverflow",
+        "Dev.to"
       ]),
-      url: PropTypes.string.isRequired,
+      url: PropTypes.string.isRequired
     })
-  ),
+  )
 };
 export default Footer;

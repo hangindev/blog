@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import { format, formatRFC3339 } from 'date-fns';
-import PortableText from './PortableText';
-import Figure from './Figure';
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
+import { format, formatRFC3339 } from "date-fns";
+import PortableText from "./PortableText";
+import Figure from "./Figure";
 
 function Post({ className, title, publishedAt, content, coverImage = null }) {
   const date = new Date(publishedAt);
-  const dateDisplay = format(date, 'MMMM d, yyyy');
+  const dateDisplay = format(date, "MMMM d, yyyy");
   return (
     <article className={clsx(className)}>
       <time pubdate="ttue" dateTime={formatRFC3339(date)} title={dateDisplay}>
@@ -33,6 +33,6 @@ Post.propTypes = {
   title: PropTypes.string.isRequired,
   publishedAt: PropTypes.string.isRequired,
   content: PropTypes.array.isRequired,
-  coverImage: PropTypes.object,
+  coverImage: PropTypes.object
 };
 export default Post;

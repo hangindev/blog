@@ -1,7 +1,7 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import ProgressiveImage from './ProgressiveImage';
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
+import ProgressiveImage from "./ProgressiveImage";
 
 function Figure({
   className,
@@ -11,10 +11,10 @@ function Figure({
   captionUrl,
   src,
   lqip,
-  aspectRatio,
+  aspectRatio
 }) {
   return (
-    <figure className={clsx('text-center', className)}>
+    <figure className={clsx("text-center", className)}>
       <ProgressiveImage
         alt={alt}
         src={src}
@@ -43,6 +43,6 @@ Figure.propTypes = {
   captionUrl: PropTypes.string,
   src: PropTypes.string.isRequired,
   lqip: PropTypes.string,
-  aspectRatio: PropTypes.number,
+  aspectRatio: PropTypes.number
 };
 export default Figure;

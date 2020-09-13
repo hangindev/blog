@@ -1,11 +1,11 @@
-import React from 'react';
-import SEO from '../components/SEO';
-import Header from '../components/Header';
-import Bio from '../components/Bio';
-import PostList from '../components/PostList';
-import Footer from '../components/Footer';
-import { getAllPosts, getBlogSettings, getAuthor } from '../lib/api';
-import { getAuthorTwitterHandle } from '../utils';
+import React from "react";
+import SEO from "../components/SEO";
+import Header from "../components/Header";
+import Bio from "../components/Bio";
+import PostList from "../components/PostList";
+import Footer from "../components/Footer";
+import { getAllPosts, getBlogSettings, getAuthor } from "../lib/api";
+import { getAuthorTwitterHandle } from "../utils";
 
 function Home({ author, posts, blogSettings, preview }) {
   return (
@@ -32,10 +32,10 @@ export async function getStaticProps({ preview = false }) {
   const [posts, blogSettings, author] = await Promise.all([
     getAllPosts(preview),
     getBlogSettings(),
-    getAuthor(),
+    getAuthor()
   ]);
   return {
-    props: { posts, blogSettings, author, preview },
+    props: { posts, blogSettings, author, preview }
   };
 }
 

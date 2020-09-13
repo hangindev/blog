@@ -1,13 +1,13 @@
-const fs = require('fs');
-const path = require('path');
-const cheerio = require('cheerio');
+const fs = require("fs");
+const path = require("path");
+const cheerio = require("cheerio");
 
 function isPageFile(filename) {
-  return path.extname(filename) === '.html' && !filename.endsWith('404.html');
+  return path.extname(filename) === ".html" && !filename.endsWith("404.html");
 }
 
 function getBuildId() {
-  return fs.readFileSync('./.next/BUILD_ID', 'utf8');
+  return fs.readFileSync("./.next/BUILD_ID", "utf8");
 }
 
 function getPageFiles(directory, files = []) {
@@ -25,9 +25,9 @@ function getPageFiles(directory, files = []) {
 
 function buildSiteMap(pageFiles) {
   const urls = pageFiles.map(file => {
-    const htmlString = fs.readFileSync(file, 'utf8');
+    const htmlString = fs.readFileSync(file, "utf8");
     const $ = cheerio.load(htmlString);
-    return $(`meta[property='og:url']`).attr('content');
+    return $(`meta[property='og:url']`).attr("content");
   });
   const sitemap = `
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" 
@@ -46,10 +46,10 @@ function buildSiteMap(pageFiles) {
     </url>
     `
     )
-    .join('')}  
+    .join("")}  
 </urlset>
 `;
-  fs.writeFileSync(path.join('./.next/static', 'sitemap.xml'), sitemap);
+  fs.writeFileSync(path.join("./.next/static", "sitemap.xml"), sitemap);
 }
 
 function byDateDesc(a, b) {
@@ -63,61 +63,61 @@ function byDateDesc(a, b) {
 function buildRss(pageFiles, pagesDir) {
   const rssData = pageFiles.reduce(
     (data, file) => {
-      const pathname = path.relative(pagesDir, file).slice(0, -'.html'.length);
-      if (pathname === 'index') {
-        const htmlString = fs.readFileSync(file, 'utf8');
+      const pathname = path.relative(pagesDir, file).slice(0, -".html".length);
+      if (pathname === "index") {
+        const htmlString = fs.readFileSync(file, "utf8");
         const $ = cheerio.load(htmlString);
-        data.title = $('title').text();
-        data.home_page_url = $(`meta[property='og:url']`).attr('content');
+        data.title = $("title").text();
+        data.home_page_url = $(`meta[property='og:url']`).attr("content");
         data.feed_url = $(
           `link[rel='alternate'][type='application/json']`
-        ).attr('href');
-        data.description = $(`meta[name='description']`).attr('content');
-        data.icon = $(`link[sizes='512x512']`).attr('href');
-        data.favicon = $(`link[sizes='64x64']`).attr('href');
+        ).attr("href");
+        data.description = $(`meta[name='description']`).attr("content");
+        data.icon = $(`link[sizes='512x512']`).attr("href");
+        data.favicon = $(`link[sizes='64x64']`).attr("href");
         data.author = {
           name: $(`a[rel='author']`).text(),
-          url: $(`a[rel='author']`).attr('href'),
-          avatar: $(`img#Avatar`).attr('src'),
+          url: $(`a[rel='author']`).attr("href"),
+          avatar: $(`img#Avatar`).attr("src")
         };
       }
-      if (pathname.startsWith('blog')) {
-        const htmlString = fs.readFileSync(file, 'utf8');
+      if (pathname.startsWith("blog")) {
+        const htmlString = fs.readFileSync(file, "utf8");
         const $ = cheerio.load(htmlString);
         $(`#Content img[aria-hidden='true']`).remove();
         data.items.push({
-          url: $(`meta[property='og:url']`).attr('content'),
-          id: pathname.substring('blog/'.length),
-          content_html: $('#Content').html(),
-          title: $('article h1').text(),
-          summary: $(`meta[name='description']`).attr('content'),
-          image: $(`meta[property='og:image']`).attr('content'),
-          banner_image: $(`meta[property='og:image']`).attr('content'),
-          date_published: $('time').attr('datetime'),
+          url: $(`meta[property='og:url']`).attr("content"),
+          id: pathname.substring("blog/".length),
+          content_html: $("#Content").html(),
+          title: $("article h1").text(),
+          summary: $(`meta[name='description']`).attr("content"),
+          image: $(`meta[property='og:image']`).attr("content"),
+          banner_image: $(`meta[property='og:image']`).attr("content"),
+          date_published: $("time").attr("datetime"),
           author: {
             name: $(`a[rel='author']`).text(),
-            url: $(`a[rel='author']`).attr('href'),
-            avatar: $(`img#Avatar`).attr('src'),
-          },
+            url: $(`a[rel='author']`).attr("href"),
+            avatar: $(`img#Avatar`).attr("src")
+          }
         });
       }
       return data;
     },
     {
-      version: 'https://jsonfeed.org/version/1',
-      items: [],
+      version: "https://jsonfeed.org/version/1",
+      items: []
     }
   );
   rssData.items.sort(byDateDesc);
   fs.writeFileSync(
-    path.join('./.next/static', 'feed.json'),
+    path.join("./.next/static", "feed.json"),
     JSON.stringify(rssData, null, 2)
   );
 }
 
 function main() {
   // 'pages' location in Vercel environment
-  let pagesDir = './.next/serverless/pages';
+  let pagesDir = "./.next/serverless/pages";
   if (!fs.existsSync(pagesDir)) {
     // 'pages' location in local environment
     pagesDir = `./.next/server/static/${getBuildId()}/pages`;

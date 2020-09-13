@@ -1,11 +1,11 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Head from 'next/head';
-import { extToMimeType } from '../utils';
+import React from "react";
+import PropTypes from "prop-types";
+import Head from "next/head";
+import { extToMimeType } from "../utils";
 
 function SEO({
-  type = 'website',
-  locale = 'en_US',
+  type = "website",
+  locale = "en_US",
   title,
   description,
   siteName,
@@ -14,7 +14,7 @@ function SEO({
   twitterCreator,
   publishedAt,
   url,
-  children,
+  children
 }) {
   return (
     <Head>
@@ -91,10 +91,10 @@ SEO.propTypes = {
     ext: PropTypes.string,
     dimensions: PropTypes.shape({
       width: PropTypes.number.isRequired,
-      height: PropTypes.number.isRequired,
-    }),
+      height: PropTypes.number.isRequired
+    })
   }),
   twitter: PropTypes.string,
-  twitterCreator: PropTypes.string,
+  twitterCreator: PropTypes.string
 };
 export default SEO;

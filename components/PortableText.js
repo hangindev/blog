@@ -1,15 +1,15 @@
-import React from 'react';
-import clsx from 'clsx';
-import Link from 'next/link';
-import BlockContent from '@sanity/block-content-to-react';
-import Highlight, { defaultProps } from 'prism-react-renderer';
-import theme from 'prism-react-renderer/themes/nightOwl';
-import ReactPlayer from 'react-player/lazy';
-import styles from './PortableText.module.css';
-import Figure from './Figure';
+import React from "react";
+import clsx from "clsx";
+import Link from "next/link";
+import BlockContent from "@sanity/block-content-to-react";
+import Highlight, { defaultProps } from "prism-react-renderer";
+import theme from "prism-react-renderer/themes/nightOwl";
+import ReactPlayer from "react-player/lazy";
+import styles from "./PortableText.module.css";
+import Figure from "./Figure";
 
 function InternalLink({ mark: { slug, type }, children }) {
-  const preflix = type === 'post' ? '/blog' : '';
+  const preflix = type === "post" ? "/blog" : "";
   if (!slug || !type) return null;
   return (
     <Link href={`${preflix}/${slug}`}>
@@ -26,7 +26,7 @@ function ExternalLink({ mark: { href }, children }) {
   );
 }
 function PortableFigure({
-  node: { alt, caption, captionUrl, url, lqip, aspectRatio },
+  node: { alt, caption, captionUrl, url, lqip, aspectRatio }
 }) {
   if (!url) return null;
   return (
@@ -44,7 +44,7 @@ function PortableFigure({
 function VideoPlayer({ node: { url } }) {
   if (!url) return null;
   return (
-    <div className="relative w-full mb-4" style={{ paddingTop: '56.25%' }}>
+    <div className="relative w-full mb-4" style={{ paddingTop: "56.25%" }}>
       <ReactPlayer
         className="absolute top-0 left-0"
         url={url}
@@ -59,7 +59,7 @@ function EmbedHTML({ node: { html } }) {
 }
 
 function resolveLanguage(lang) {
-  return lang === 'sh' ? 'bash' : lang;
+  return lang === "sh" ? "bash" : lang;
 }
 function CodeBlock({ node: { code, language } }) {
   return (
@@ -87,14 +87,14 @@ function CodeBlock({ node: { code, language } }) {
 const serializers = {
   marks: {
     internalLink: InternalLink,
-    link: ExternalLink,
+    link: ExternalLink
   },
   types: {
     figure: PortableFigure,
     code: CodeBlock,
     video: VideoPlayer,
-    embedHTML: EmbedHTML,
-  },
+    embedHTML: EmbedHTML
+  }
 };
 
 function PortableText({ className, ...props }) {

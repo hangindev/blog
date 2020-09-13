@@ -1,5 +1,5 @@
-import Document, { Html, Head, Main, NextScript } from 'next/document';
-import { getDocuemntData, imageBuilder } from '../lib/api';
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import { getDocuemntData, imageBuilder } from "../lib/api";
 
 const faviconWidths = [512, 192, 32, 96, 64, 16];
 

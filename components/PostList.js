@@ -1,5 +1,5 @@
-import React from 'react';
-import PostListItem from './PostListItem';
+import React from "react";
+import PostListItem from "./PostListItem";
 
 function PostList({ className, posts }) {
   return (

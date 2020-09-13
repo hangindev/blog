@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { format } from 'date-fns';
-import Link from 'next/link';
-import { imageBuilder } from '../lib/api';
-import Image from './ProgressiveImage';
+import React from "react";
+import PropTypes from "prop-types";
+import { format } from "date-fns";
+import Link from "next/link";
+import { imageBuilder } from "../lib/api";
+import Image from "./ProgressiveImage";
 
 function PostListItem({ title, publishedAt, slug, excerpt, coverImage }) {
   return (
@@ -22,7 +22,7 @@ function PostListItem({ title, publishedAt, slug, excerpt, coverImage }) {
         </a>
       </Link>
       <div>
-        <small>{format(new Date(publishedAt), 'MMM d, yyyy')}</small>
+        <small>{format(new Date(publishedAt), "MMM d, yyyy")}</small>
         <h4 className="text-2xl font-bold mb-2 leading-tight">
           <Link href="/blog/[slug]" as={`/blog/${slug}`}>
             <a>{title}</a>
@@ -50,8 +50,8 @@ PostListItem.propTypes = {
   coverImage: PropTypes.shape({
     url: PropTypes.string.isRequired,
     lqip: PropTypes.string.isRequired,
-    alt: PropTypes.string,
-  }),
+    alt: PropTypes.string
+  })
 };
 
 export default PostListItem;

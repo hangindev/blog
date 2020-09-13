@@ -1,13 +1,13 @@
-import React from 'react';
-import clsx from 'clsx';
-import PropTypes from 'prop-types';
-import Link from 'next/link';
+import React from "react";
+import clsx from "clsx";
+import PropTypes from "prop-types";
+import Link from "next/link";
 
 function PostNav({ next, prev, className }) {
   return (
     <ul
       className={clsx(
-        'flex flex-col md:flex-row md:justify-between',
+        "flex flex-col md:flex-row md:justify-between",
         className
       )}
     >
@@ -31,12 +31,12 @@ function PostNav({ next, prev, className }) {
 PostNav.propTypes = {
   prev: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string.isRequired
   }),
   next: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired,
-  }),
+    title: PropTypes.string.isRequired
+  })
 };
 
 export default PostNav;

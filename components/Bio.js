@@ -1,13 +1,13 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import BlockContent from '@sanity/block-content-to-react';
-import { imageBuilder } from '../lib/api';
+import React from "react";
+import PropTypes from "prop-types";
+import clsx from "clsx";
+import BlockContent from "@sanity/block-content-to-react";
+import { imageBuilder } from "../lib/api";
 
 function Bio({ author, className }) {
-  const twitter = author.socialLinks.find(l => l.type === 'Twitter');
+  const twitter = author.socialLinks.find(l => l.type === "Twitter");
   return (
-    <aside className={clsx('flex items-center', className)}>
+    <aside className={clsx("flex items-center", className)}>
       <img
         className="w-12 h-12 object-cover object-center rounded-full"
         src={imageBuilder
@@ -21,7 +21,7 @@ function Bio({ author, className }) {
         <a
           className="text-lg text-gray-900"
           rel="author"
-          href={twitter?.url || '/'}
+          href={twitter?.url || "/"}
         >
           {author.name}
         </a>
@@ -34,7 +34,7 @@ Bio.propTypes = {
   author: PropTypes.shape({
     picture: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    bio: PropTypes.array.isRequired,
-  }),
+    bio: PropTypes.array.isRequired
+  })
 };
 export default Bio;
