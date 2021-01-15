@@ -40,10 +40,10 @@ Footer.propTypes = {
         "Medium",
         "Github",
         "Stackoverflow",
-        "Dev.to"
+        "Dev.to",
       ]),
-      url: PropTypes.string.isRequired
-    })
-  )
+      url: PropTypes.string.isRequired,
+    }),
+  ),
 };
 export default Footer;

@@ -11,7 +11,7 @@ function Figure({
   captionUrl,
   src,
   lqip,
-  aspectRatio
+  aspectRatio,
 }) {
   return (
     <figure className={clsx("text-center", className)}>
@@ -43,6 +43,6 @@ Figure.propTypes = {
   captionUrl: PropTypes.string,
   src: PropTypes.string.isRequired,
   lqip: PropTypes.string,
-  aspectRatio: PropTypes.number
+  aspectRatio: PropTypes.number,
 };
 export default Figure;

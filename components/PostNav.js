@@ -8,7 +8,7 @@ function PostNav({ next, prev, className }) {
     <ul
       className={clsx(
         "flex flex-col md:flex-row md:justify-between",
-        className
+        className,
       )}
     >
       <li className="mb-2 md:flex-grow md:w-0 md:my-0 md:mr-2">
@@ -31,12 +31,12 @@ function PostNav({ next, prev, className }) {
 PostNav.propTypes = {
   prev: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
+    title: PropTypes.string.isRequired,
   }),
   next: PropTypes.shape({
     slug: PropTypes.string.isRequired,
-    title: PropTypes.string.isRequired
-  })
+    title: PropTypes.string.isRequired,
+  }),
 };
 
 export default PostNav;

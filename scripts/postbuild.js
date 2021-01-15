@@ -44,7 +44,7 @@ function buildSiteMap(pageFiles) {
       <changefreq>daily</changefreq>
       <priority>0.7</priority>
     </url>
-    `
+    `,
     )
     .join("")}  
 </urlset>
@@ -70,7 +70,7 @@ function buildRss(pageFiles, pagesDir) {
         data.title = $("title").text();
         data.home_page_url = $(`meta[property='og:url']`).attr("content");
         data.feed_url = $(
-          `link[rel='alternate'][type='application/json']`
+          `link[rel='alternate'][type='application/json']`,
         ).attr("href");
         data.description = $(`meta[name='description']`).attr("content");
         data.icon = $(`link[sizes='512x512']`).attr("href");
@@ -78,7 +78,7 @@ function buildRss(pageFiles, pagesDir) {
         data.author = {
           name: $(`a[rel='author']`).text(),
           url: $(`a[rel='author']`).attr("href"),
-          avatar: $(`img#Avatar`).attr("src")
+          avatar: $(`img#Avatar`).attr("src"),
         };
       }
       if (pathname.startsWith("blog")) {
@@ -97,21 +97,21 @@ function buildRss(pageFiles, pagesDir) {
           author: {
             name: $(`a[rel='author']`).text(),
             url: $(`a[rel='author']`).attr("href"),
-            avatar: $(`img#Avatar`).attr("src")
-          }
+            avatar: $(`img#Avatar`).attr("src"),
+          },
         });
       }
       return data;
     },
     {
       version: "https://jsonfeed.org/version/1",
-      items: []
-    }
+      items: [],
+    },
   );
   rssData.items.sort(byDateDesc);
   fs.writeFileSync(
     path.join("./.next/static", "feed.json"),
-    JSON.stringify(rssData, null, 2)
+    JSON.stringify(rssData, null, 2),
   );
 }
 

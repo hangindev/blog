@@ -11,7 +11,7 @@ function Header({ className, name }) {
       <h1
         className={clsx(
           "font-black text-blue-500 text-xl",
-          pathname === "/" && "text-3xl"
+          pathname === "/" && "text-3xl",
         )}
       >
         <Link href="/">
@@ -23,7 +23,7 @@ function Header({ className, name }) {
   );
 }
 Header.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
 };
 
 export default Header;

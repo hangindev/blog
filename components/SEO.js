@@ -14,7 +14,7 @@ function SEO({
   twitterCreator,
   publishedAt,
   url,
-  children
+  children,
 }) {
   return (
     <Head>
@@ -91,10 +91,10 @@ SEO.propTypes = {
     ext: PropTypes.string,
     dimensions: PropTypes.shape({
       width: PropTypes.number.isRequired,
-      height: PropTypes.number.isRequired
-    })
+      height: PropTypes.number.isRequired,
+    }),
   }),
   twitter: PropTypes.string,
-  twitterCreator: PropTypes.string
+  twitterCreator: PropTypes.string,
 };
 export default SEO;

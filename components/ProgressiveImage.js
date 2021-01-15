@@ -7,7 +7,7 @@ function ProgressiveImage({
   src,
   alt,
   lqip = null,
-  aspectRatio = 3 / 2
+  aspectRatio = 3 / 2,
 }) {
   const imgRef = useRef();
   const [loaded, setLoaded] = useState(false);
@@ -30,7 +30,7 @@ function ProgressiveImage({
         ref={imgRef}
         className={clsx(
           "absolute w-full h-full inset-0 object-cover object-center opacity-0 transition duration-700 ease-in-out transition-opacity",
-          (loaded || !lqip) && "opacity-100"
+          (loaded || !lqip) && "opacity-100",
         )}
         src={src}
         alt={alt}
@@ -43,7 +43,7 @@ ProgressiveImage.propTypes = {
   src: PropTypes.string.isRequired,
   alt: PropTypes.string.isRequired,
   lqip: PropTypes.string,
-  aspectRatio: PropTypes.number
+  aspectRatio: PropTypes.number,
 };
 
 export default ProgressiveImage;

@@ -33,6 +33,6 @@ Post.propTypes = {
   title: PropTypes.string.isRequired,
   publishedAt: PropTypes.string.isRequired,
   content: PropTypes.array.isRequired,
-  coverImage: PropTypes.object
+  coverImage: PropTypes.object,
 };
 export default Post;

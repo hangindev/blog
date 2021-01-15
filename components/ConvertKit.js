@@ -9,7 +9,7 @@ function parseScript(script) {
     const scriptEl = el.querySelector("script");
     return {
       uid: scriptEl.dataset.uid,
-      src: scriptEl.getAttribute("src")
+      src: scriptEl.getAttribute("src"),
     };
   } catch (e) {
     console.log(e);
@@ -43,7 +43,7 @@ function ConvertKit({ className, script }) {
   );
 }
 ConvertKit.propTypes = {
-  script: PropTypes.string.isRequired
+  script: PropTypes.string.isRequired,
 };
 
 export default ConvertKit;

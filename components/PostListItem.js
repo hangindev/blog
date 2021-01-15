@@ -50,8 +50,8 @@ PostListItem.propTypes = {
   coverImage: PropTypes.shape({
     url: PropTypes.string.isRequired,
     lqip: PropTypes.string.isRequired,
-    alt: PropTypes.string
-  })
+    alt: PropTypes.string,
+  }),
 };
 
 export default PostListItem;

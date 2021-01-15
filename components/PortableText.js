@@ -26,7 +26,7 @@ function ExternalLink({ mark: { href }, children }) {
   );
 }
 function PortableFigure({
-  node: { alt, caption, captionUrl, url, lqip, aspectRatio }
+  node: { alt, caption, captionUrl, url, lqip, aspectRatio },
 }) {
   if (!url) return null;
   return (
@@ -87,14 +87,14 @@ function CodeBlock({ node: { code, language } }) {
 const serializers = {
   marks: {
     internalLink: InternalLink,
-    link: ExternalLink
+    link: ExternalLink,
   },
   types: {
     figure: PortableFigure,
     code: CodeBlock,
     video: VideoPlayer,
-    embedHTML: EmbedHTML
-  }
+    embedHTML: EmbedHTML,
+  },
 };
 
 function PortableText({ className, ...props }) {

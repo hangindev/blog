@@ -11,7 +11,7 @@ import {
   getPost,
   getAuthor,
   getBlogSettings,
-  imageBuilder
+  imageBuilder,
 } from "../../lib/api";
 import { getAuthorTwitterHandle } from "../../utils";
 import ConvertKit from "../../components/ConvertKit";
@@ -27,7 +27,7 @@ function BlogPost({ preview, post, blogSettings, author, next, prev }) {
         .url(),
       alt: post.coverImage.alt,
       ext: post.coverImage.ext,
-      dimensions: { width: 1200, height: 630 }
+      dimensions: { width: 1200, height: 630 },
     };
   }
   return (
@@ -66,7 +66,7 @@ export async function getStaticProps({ params, preview = false }) {
     getPost(params.slug, preview),
     getAuthor(),
     getBlogSettings(),
-    getAllPostWithSlugs()
+    getAllPostWithSlugs(),
   ]);
   const postIndex = allPosts.findIndex(p => p.slug === params.slug);
   return {
@@ -76,8 +76,8 @@ export async function getStaticProps({ params, preview = false }) {
       blogSettings,
       author,
       next: allPosts[postIndex - 1] || null,
-      prev: allPosts[postIndex + 1] || null
-    }
+      prev: allPosts[postIndex + 1] || null,
+    },
   };
 }
 
@@ -86,8 +86,8 @@ export async function getStaticPaths() {
   return {
     paths:
       posts.map(({ slug }) => ({
-        params: { slug }
+        params: { slug },
       })) || [],
-    fallback: false
+    fallback: false,
   };
 }

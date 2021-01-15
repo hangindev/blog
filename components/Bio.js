@@ -34,7 +34,7 @@ Bio.propTypes = {
   author: PropTypes.shape({
     picture: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    bio: PropTypes.array.isRequired
-  })
+    bio: PropTypes.array.isRequired,
+  }),
 };
 export default Bio;
